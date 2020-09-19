@@ -38,6 +38,7 @@ class Main extends Component {
     };
 
     const CampsiteWithId = ({ match }) => {
+      console.log({ match });
       return (
         <CampsiteInfo
           campsite={
