@@ -6,7 +6,9 @@ import {
   CardBody,
   Breadcrumb,
   BreadcrumbItem,
+  Button,
 } from "reactstrap";
+import { Control, LocalForm, Errors } from "react-redux-form";
 import { Link } from "react-router-dom";
 
 function RenderCampsite({ campsite }) {
@@ -46,6 +48,17 @@ function RenderComments({ comments }) {
   return <div></div>;
 }
 
+function CommentForm() {
+  return (
+    <Button type="submit" outline>
+      <i className="fa fa-pencil" />
+      Submit Comment
+    </Button>
+  );
+}
+
+//========
+
 function CampsiteInfo(props) {
   if (props.campsite) {
     return (
@@ -64,7 +77,10 @@ function CampsiteInfo(props) {
         </div>
         <div className="row">
           <RenderCampsite campsite={props.campsite} />
-          <RenderComments comments={props.comments} />
+          <div className="col">
+            <RenderComments comments={props.comments} />
+            <CommentForm />
+          </div>
         </div>
       </div>
     );
