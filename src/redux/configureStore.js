@@ -1,9 +1,12 @@
-import {createStore, combineReducers} from 'redux';
+import {createStore, combineReducers, applyMiddleware} from 'redux';
+import thunk from 'redux-thunk';
+import logger from 'redux-logger';
 // these are reducer files in the redux folder
 import { Campsites } from './campsites';
 import { Comments } from './comments';
 import { Partners } from './partners';
 import { Promotions } from './promotions';
+
 
 export const ConfigureStore = () => {
     const store = createStore(
@@ -12,7 +15,8 @@ export const ConfigureStore = () => {
             comments: Comments,
             partners: Partners,
             promotions: Promotions
-        })
+        }),
+        applyMiddleware(thunk, logger)
     );
 
     return store;
