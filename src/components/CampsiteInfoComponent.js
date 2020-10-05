@@ -16,9 +16,9 @@ import {
 } from "reactstrap";
 import { Control, LocalForm, Errors } from "react-redux-form";
 import { Link } from "react-router-dom";
-import { addComment } from "../redux/ActionCreators";
+import { postComment } from "../redux/ActionCreators";
 import { Loading } from "./LoadingComponent";
-import { baseUrl } from '../shared/baseUrl';
+import { baseUrl } from "../shared/baseUrl";
 
 const required = (val) => val && val.length;
 // test: returns false if max length is exceeded
@@ -39,7 +39,7 @@ function RenderCampsite({ campsite }) {
   );
 }
 
-function RenderComments({ comments, addComment, campsiteId }) {
+function RenderComments({ comments, postComment, campsiteId }) {
   if (comments) {
     return (
       <div className="col-md-5 m-1">
@@ -57,7 +57,7 @@ function RenderComments({ comments, addComment, campsiteId }) {
             </p>
           </div>
         ))}
-        <CommentForm campsiteId={campsiteId} addComment={addComment} />
+        <CommentForm campsiteId={campsiteId} postComment={postComment} />
       </div>
     );
   }
@@ -87,7 +87,7 @@ class CommentForm extends Component {
   }
 
   handleSubmit(values) {
-    this.props.addComment(
+    this.props.postComment(
       this.props.campsiteId,
       values.rating,
       values.author,
@@ -236,7 +236,7 @@ function CampsiteInfo(props) {
           <div className="col">
             <RenderComments
               comments={props.comments}
-              addComment={props.addComment}
+              postComment={props.postComment}
               campsiteId={props.campsite.id}
             />
           </div>
