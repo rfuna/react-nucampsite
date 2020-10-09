@@ -16,7 +16,6 @@ import {
 } from "reactstrap";
 import { Control, LocalForm, Errors } from "react-redux-form";
 import { Link } from "react-router-dom";
-import { postComment } from "../redux/ActionCreators";
 import { Loading } from "./LoadingComponent";
 import { baseUrl } from "../shared/baseUrl";
 import { FadeTransform, Fade, Stagger } from "react-animation-components";
